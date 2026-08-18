@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
 
@@ -21,7 +20,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -36,14 +35,6 @@ android {
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')
         failOnError false
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
 }
@@ -63,7 +54,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.8.0'
     testImplementation 'org.robolectric:robolectric:4.5.1'
     implementation "androidx.core:core-ktx:1.7.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21"
 }
 
 
@@ -74,6 +65,6 @@ ext {
 }
 
 //apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"
-repositories {
-    mavenCentral()
-}
+//repositories {
+//    mavenCentral()
+//}
